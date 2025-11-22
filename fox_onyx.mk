@@ -13,3 +13,6 @@ OF_STATUS_INDENT_LEFT := 56
 OF_STATUS_INDENT_RIGHT := 48
 OF_ALLOW_DISABLE_NAVBAR := 0
 OF_USE_GREEN_LED := 0
+
+# Set this to 1 to force the selection of f2fs when formatting data
+OF_FORCE_DATA_FORMAT_F2FS := 1
