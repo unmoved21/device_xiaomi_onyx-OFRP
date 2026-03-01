@@ -33,7 +33,6 @@ on property:twrp.all.users.decrypted=true
 # Runs after decryption, and running touchscreen service 
 on property:twrp.all.users.decrypted=true && property:init.svc.touchfeature-service=running
     umount /vendor/firmware_mnt
-    umount /firmware
     umount /mnt/vendor/persist
 
     setprop twrp.firmware.mounted false
