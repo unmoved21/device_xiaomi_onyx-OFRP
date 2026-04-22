@@ -16,7 +16,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/xiaomi/onyx/device.mk)
 
 PRODUCT_DEVICE := onyx
-PRODUCT_NAME := omni_onyx
+PRODUCT_NAME := twrp_onyx
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := 25053PC47G
 PRODUCT_MANUFACTURER := xiaomi

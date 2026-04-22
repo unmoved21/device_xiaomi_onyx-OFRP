@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_onyx.mk
+    $(LOCAL_DIR)/twrp_onyx.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_onyx-user \
-    omni_onyx-userdebug \
-    omni_onyx-eng
+    twrp_onyx-user \
+    twrp_onyx-userdebug \
+    twrp_onyx-eng
