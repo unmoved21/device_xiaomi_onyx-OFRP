@@ -45,17 +45,21 @@ BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT   := true
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 
 # Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE                 := 104857600
-BOARD_RECOVERYIMAGE_PARTITION_SIZE             := 104857600
-BOARD_HAS_LARGE_FILESYSTEM                     := true
-BOARD_SYSTEMIMAGE_PARTITION_TYPE               := ext4
-BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE           := ext4
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE             := ext4
-TARGET_COPY_OUT_VENDOR                         := vendor
-BOARD_SUPER_PARTITION_SIZE                     := 9126805504 # TODO: Fix hardcoded value
-BOARD_SUPER_PARTITION_GROUPS                   := xiaomi_dynamic_partitions
-BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system system_ext system_ext product product mi_ext mi_ext vendor vendor odm odm
-BOARD_XIAOMI_DYNAMIC_PARTITIONS_SIZE           := 9122611200 # TODO: Fix hardcoded value
+BOARD_RECOVERYIMAGE_PARTITION_SIZE   := 104857600
+BOARD_HAS_LARGE_FILESYSTEM           := true
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE   := ext4
+TARGET_COPY_OUT_VENDOR               := vendor
+
+# Dynamic Partition
+BOARD_SUPER_PARTITION_SIZE                  := 11811160064
+BOARD_SUPER_PARTITION_GROUPS                := qti_dynamic_partitions
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE           := 11809841488
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor vendor_dlkm odm
+
+BOARD_PARTITION_LIST := $(call to-upper, $(BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST))
+$(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := erofs))
+$(foreach p, $(BOARD_PARTITION_LIST), $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
 
 # Platform
 TARGET_BOARD_PLATFORM := sun
