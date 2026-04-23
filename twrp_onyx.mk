@@ -15,6 +15,9 @@ $(call inherit-product, vendor/omni/config/common.mk)
 # Inherit from onyx device
 $(call inherit-product, device/xiaomi/onyx/device.mk)
 
+# Import OrangeFox specifics
+$(call inherit-product, device/xiaomi/onyx/fox_onyx.mk)
+
 PRODUCT_DEVICE := onyx
 PRODUCT_NAME := twrp_onyx
 PRODUCT_BRAND := POCO
