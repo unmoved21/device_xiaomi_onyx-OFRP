@@ -6,7 +6,6 @@
 #
 
 DEVICE_PATH := device/xiaomi/onyx
-
 # Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
@@ -41,6 +40,11 @@ AB_OTA_PARTITIONS += \
  system_dlkm \
  vendor \
  vendor_dlkm
+
+# Display Size & Density
+TARGET_SCREEN_HEIGHT := 2712
+TARGET_SCREEN_WIDTH  := 1220
+TARGET_SCREEN_DENSITY := 480
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
