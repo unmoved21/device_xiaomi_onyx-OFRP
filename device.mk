@@ -5,8 +5,24 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/xiaomi/onyx
+DEVICE_PATH := device/xiaomi/onyx
+
 # A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+ boot \
+ init_boot \
+ vendor_boot \
+ dtbo \
+ vbmeta \
+ vbmeta_system \
+ odm \
+ product \
+ system \
+ system_ext \
+ system_dlkm \
+ vendor \
+ vendor_dlkm
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
