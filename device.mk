@@ -53,3 +53,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     bootctrl.sun
+
+# Security patch level
+VENDOR_SECURITY_PATCH := 2021-08-01
+
+# Hack: prevent anti rollback
+PLATFORM_SECURITY_PATCH := 2099-12-31
+VENDOR_SECURITY_PATCH   := 2099-12-31
+PLATFORM_VERSION        := 16.1.0

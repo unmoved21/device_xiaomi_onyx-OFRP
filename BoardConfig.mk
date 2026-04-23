@@ -87,17 +87,9 @@ TARGET_RECOVERY_FSTAB := \
 TARGET_BOARD_INFO_FILE := \
  $(DEVICE_PATH)/board-info.txt
 
-# Security patch level
-VENDOR_SECURITY_PATCH := 2021-08-01
-
 # Verified Boot
 BOARD_AVB_ENABLE                 := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
-
-# Hack: prevent anti rollback
-PLATFORM_SECURITY_PATCH := 2099-12-31
-VENDOR_SECURITY_PATCH   := 2099-12-31
-PLATFORM_VERSION        := 16.1.0
 
 # TWRP Configuration
 TW_THEME                := portrait_hdpi
