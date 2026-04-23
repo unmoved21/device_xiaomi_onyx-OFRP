@@ -22,8 +22,7 @@ TARGET_CPU_VARIANT_RUNTIME := oryon
 DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := sun
-TARGET_NO_BOOTLOADER         := true
+TARGET_NO_BOOTLOADER := true
 
 # Display
 TARGET_USES_VULKAN := true
@@ -62,7 +61,11 @@ $(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE :=
 $(foreach p, $(BOARD_PARTITION_LIST), $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
 
 # Platform
-TARGET_BOARD_PLATFORM := sun
+TARGET_BOOTLOADER_BOARD_NAME := onyx
+TARGET_BOARD_PLATFORM        := sun
+TARGET_BOARD_PLATFORM_GPU    := qcom-adreno825
+TARGET_USES_UEFI             := true
+BOARD_USES_QCOM_HARDWARE     := true
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
