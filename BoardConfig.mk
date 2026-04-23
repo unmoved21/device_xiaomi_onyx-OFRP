@@ -72,6 +72,15 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4   := true
 TARGET_USERIMAGES_USE_F2FS   := true
 
+TARGET_SYSTEM_PROP := \
+ $(DEVICE_PATH)/system.prop
+
+TARGET_RECOVERY_FSTAB := \
+ $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+
+TARGET_BOARD_INFO_FILE := \
+ $(DEVICE_PATH)/board-info.txt
+
 # Security patch level
 VENDOR_SECURITY_PATCH := 2021-08-01
 

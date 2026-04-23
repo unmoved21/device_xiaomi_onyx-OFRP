@@ -1,0 +1,18 @@
+# Gatekeeper, Encryption
+fbe.metadata.wrappedkey=true
+vendor.gatekeeper.disable_spu=true
+
+# Platform
+ro.board.platform=sun
+
+# FUSE passthrough
+persist.sys.fuse.passthrough.enable=true
+
+# Dynamic Partitions
+ro.boot.dynamic_partitions=true
+
+# Charger suspend 
+ro.charger.enable_suspend=1
+
+# ADB
+ro.adb.secure=0
