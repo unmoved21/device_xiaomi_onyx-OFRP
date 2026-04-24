@@ -59,6 +59,9 @@ TW_INCLUDE_PYTHON       := true
 TW_NO_SCREEN_BLANK      := true
 TW_FRAMERATE            := 120
 
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone48/temp"
+TW_BRIGHTNESS_PATH      := "/sys/class/backlight/panel0-backlight/brightness"
+
 # API
 PRODUCT_SHIPPING_API_LEVEL  := 34
 PRODUCT_TARGET_VNDK_VERSION := 34
