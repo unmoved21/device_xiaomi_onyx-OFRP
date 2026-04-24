@@ -70,6 +70,10 @@ TARGET_SCREEN_HEIGHT := 2712
 TARGET_SCREEN_WIDTH  := 1220
 TARGET_SCREEN_DENSITY := 480
 
+# Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_BUILD_SUPER_PARTITION  := false
+
 # Boot control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
