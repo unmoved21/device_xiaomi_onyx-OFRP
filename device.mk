@@ -41,6 +41,24 @@ AB_OTA_PARTITIONS += \
  vendor \
  vendor_dlkm
 
+# TWRP - Specifics
+TW_THEME                := portrait_hdpi
+TW_INPUT_BLACKLIST      := "hbtp_vm"
+TW_DEFAULT_LANGUAGE     := en
+TW_USE_TOOLBOX          := true
+TW_INCLUDE_NTFS_3G      := true
+TW_INCLUDE_RESETPROP    := true
+TW_INCLUDE_LIBRESETPROP := true
+TW_MAX_BRIGHTNESS       := 4095
+TW_EXTRA_LANGUAGES      := true
+TW_DEFAULT_BRIGHTNESS   := 2047
+TW_EXCLUDE_APEX         := true
+TW_INCLUDE_FASTBOOTD    := true
+TWRP_INCLUDE_LOGCAT     := true
+TW_INCLUDE_PYTHON       := true
+TW_NO_SCREEN_BLANK      := true
+TW_FRAMERATE            := 120
+
 # Display Size & Density
 TARGET_SCREEN_HEIGHT := 2712
 TARGET_SCREEN_WIDTH  := 1220
