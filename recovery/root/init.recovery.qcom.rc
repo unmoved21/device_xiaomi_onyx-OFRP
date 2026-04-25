@@ -27,6 +27,7 @@ on property:twrp.modules.loaded=true
 
 on init
     start vendor.boot-qti
+    setprop logd.ready true
 
 on early-fs
     write /proc/sys/walt/sched_lib_name "recovery,magiskboot,Updater,updater,update_engine_sideload"
