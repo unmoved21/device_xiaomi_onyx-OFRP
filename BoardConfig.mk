@@ -31,6 +31,10 @@ TARGET_NO_BOOTLOADER := true
 # Display
 TARGET_USES_VULKAN := true
 
+# Power
+ENABLE_CPUSETS := true
+ENABLE_SCHEDBOOST := true
+
 # Kernel / Recovery image
 TARGET_PREBUILT_KERNEL    := $(DEVICE_PATH)/prebuilt/kernel
 TARGET_KERNEL_ARCH        := $(TARGET_ARCH)
