@@ -52,6 +52,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ];
     export FOX_ENABLE_APP_MANAGER=1
     export FOX_DELETE_AROMAFM=1
     export FOX_DELETE_INITD_ADDON=1
+    export FOX_USE_NANO_EDITOR=1
 
     # KernelSU-Next / SukiSu support
     export FOX_ENABLE_KERNELSU_NEXT_SUPPORT=1
