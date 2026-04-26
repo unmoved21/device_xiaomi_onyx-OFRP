@@ -60,6 +60,10 @@ TW_INCLUDE_PYTHON       := true
 TW_NO_SCREEN_BLANK      := true
 TW_FRAMERATE            := 120
 
+# Vendor modules required for the recovery to function properly
+TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
+TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko nt38771_touch.ko nxp-nci.ko xiaomi_touch.ko"
+
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone48/temp"
 TW_BRIGHTNESS_PATH      := "/sys/class/backlight/panel0-backlight/brightness"
 
