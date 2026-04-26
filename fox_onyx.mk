@@ -14,6 +14,10 @@ OF_STATUS_INDENT_RIGHT := 48
 OF_ALLOW_DISABLE_NAVBAR := 0
 OF_USE_GREEN_LED := 0
 
+# A/B partitioning
+OF_AB_DEVICE_WITH_RECOVERY_PARTITION := 1
+OF_ENABLE_ALL_PARTITION_TOOLS := 1
+
 # Number of list options before scrollbar creation
 OF_OPTIONS_LIST_NUM := 11
 
