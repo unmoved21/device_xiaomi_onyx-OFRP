@@ -23,3 +23,6 @@ OF_OPTIONS_LIST_NUM := 11
 
 # Set this to 1 to force the selection of f2fs when formatting data
 OF_FORCE_DATA_FORMAT_F2FS := 1
+
+# Ensure that /sdcard is unbinded before /data repair/format
+OF_UNBIND_SDCARD_F2FS := 1
