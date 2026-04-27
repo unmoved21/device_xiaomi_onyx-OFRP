@@ -47,6 +47,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ];
     export FOX_USE_ZSTD_BINARY=1
     export FOX_USE_DATE_BINARY=1
     export FOX_REPLACE_TOOLBOX_GETPROP=1
+    export FOX_REMOVE_AAPT=1
 
     # OrangeFox Addons
     export FOX_ENABLE_APP_MANAGER=1
