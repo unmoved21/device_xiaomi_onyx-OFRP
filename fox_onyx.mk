@@ -26,3 +26,6 @@ OF_FORCE_DATA_FORMAT_F2FS := 1
 
 # Ensure that /sdcard is unbinded before /data repair/format
 OF_UNBIND_SDCARD_F2FS := 1
+
+# Wipe /metadata after /data format
+OF_WIPE_METADATA_AFTER_DATAFORMAT := 1
