@@ -69,6 +69,9 @@ TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko nt38771_touch.ko nxp-nci.ko xiaom
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone48/temp"
 TW_BRIGHTNESS_PATH      := "/sys/class/backlight/panel0-backlight/brightness"
 
+# OTA device(s)
+TARGET_OTA_ASSERT_DEVICE := onyx
+
 # API
 PRODUCT_SHIPPING_API_LEVEL  := 34
 PRODUCT_TARGET_VNDK_VERSION := 34
