@@ -32,3 +32,6 @@ OF_WIPE_METADATA_AFTER_DATAFORMAT := 1
 
 # Avoid MTP issues after data format
 OF_BIND_MOUNT_SDCARD_ON_FORMAT := 1
+
+# Ignore the loop block errors after flashing ZIPs
+OF_LOOP_DEVICE_ERRORS_TO_LOG := 1
