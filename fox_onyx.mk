@@ -35,3 +35,6 @@ OF_BIND_MOUNT_SDCARD_ON_FORMAT := 1
 
 # Ignore the loop block errors after flashing ZIPs
 OF_LOOP_DEVICE_ERRORS_TO_LOG := 1
+
+# use lz4 compression (don't duplicate the setting - already set by "BOARD_RAMDISK_USE_LZ4 := true")
+OF_USE_LZ4_COMPRESSION := 1
