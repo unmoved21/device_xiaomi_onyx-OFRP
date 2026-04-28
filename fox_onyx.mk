@@ -38,3 +38,6 @@ OF_LOOP_DEVICE_ERRORS_TO_LOG := 1
 
 # use lz4 compression (don't duplicate the setting - already set by "BOARD_RAMDISK_USE_LZ4 := true")
 OF_USE_LZ4_COMPRESSION := 1
+
+# use dmctl to work around problems with formatting the /data partition
+OF_USE_DMCTL := 1
