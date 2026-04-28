@@ -63,6 +63,7 @@ TW_NO_SCREEN_BLANK      := true
 TW_FRAMERATE            := 120
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
+TW_HAS_EDL_MODE := true
 
 # Vendor modules required for the recovery to function properly
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
