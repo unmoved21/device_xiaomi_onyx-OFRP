@@ -61,6 +61,7 @@ TWRP_INCLUDE_LOGCAT     := true
 TW_INCLUDE_PYTHON       := true
 TW_NO_SCREEN_BLANK      := true
 TW_FRAMERATE            := 120
+RECOVERY_SDCARD_ON_DATA := true
 
 # Vendor modules required for the recovery to function properly
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
