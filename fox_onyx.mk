@@ -41,3 +41,6 @@ OF_USE_LZ4_COMPRESSION := 1
 
 # use dmctl to work around problems with formatting the /data partition
 OF_USE_DMCTL := 1
+
+# Set to 1 to force the casefolding props to true. Useful for devices that shipped with Android 11+/FBEv2, where casefolding is always used
+OF_FORCE_CASEFOLDING := 1
