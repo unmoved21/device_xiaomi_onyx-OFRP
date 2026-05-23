@@ -77,5 +77,3 @@ subsystem mi_display
 /dev/fm-ntag              0660   nfc        nfc
 /dev/nxp-ntag             0660   nfc        nfc
 
- hang_task
-/dev/Monitor_Hang	0660	system	system
