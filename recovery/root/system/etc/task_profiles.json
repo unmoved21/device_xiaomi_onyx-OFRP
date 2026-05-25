@@ -82,7 +82,6 @@
       "Controller": "freezer",
       "File": "cgroup.freeze"
     }
-    }
   ],
 
   "Profiles": [
