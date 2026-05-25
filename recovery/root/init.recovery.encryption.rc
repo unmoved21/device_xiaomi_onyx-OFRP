@@ -21,6 +21,7 @@ on property:ro.crypto.state=encrypted && property:twrp.firmware.mounted=true
 on property:twrp.all.users.decrypted=true
     stop keystore2
     stop vendor.secure_element
+    stop se_omapi
     stop vendor.weaver-service
     stop vendor.weaver_nxp
     stop vendor.keymint-strongbox
