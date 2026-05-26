@@ -1,0 +1,21 @@
+# Copyright (C) 2026 The Android Open Source Project
+# SPDX-License-Identifier: Apache-2.0
+
+on boot
+    chown system system /sys/bus/i2c/drivers/sih_haptic_688X/5-006b/f0_save
+    chown system system /sys/bus/i2c/drivers/sih_haptic_688X/5-006b/osc_save
+    chown system system /sys/bus/i2c/drivers/sih_haptic_688X/5-006b/custom_wave
+    chmod 0666 /sys/bus/i2c/drivers/sih_haptic_688X/5-006b/custom_wave
+
+    setprop vendor.haptic.calibrate.done 1
+    start vibratorfeature-service
+
+service vibratorfeature-service /vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
+    user root
+    group root system input audio
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/vendor/odm/lib64:/bin
+    seclabel u:r:recovery:s0
+    capabilities SYS_NICE
+    priority -5
+    ioprio rt 5
+    disabled
