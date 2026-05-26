@@ -13,12 +13,8 @@ on property:twrp.modules.loaded=true
     mkdir /firmware
     mkdir /vendor/firmware_mnt
 
-    mkdir /mnt/vendor
-    mkdir /mnt/vendor/persist
-
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
     mount none /firmware /vendor/firmware_mnt bind
-    mount ext4 /dev/block/bootdevice/by-name/persist /mnt/vendor/persist ro
 
     wait /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
