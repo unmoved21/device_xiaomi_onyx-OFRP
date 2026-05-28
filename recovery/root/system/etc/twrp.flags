@@ -15,7 +15,7 @@
 
 # Metadata/Cache/Misc Properties
 /metadata              f2fs    /dev/block/bootdevice/by-name/metadata                             flags=display="Metadata";backup=1;wrappedkey
-/cache                 auto    /dev/block/bootdevice/by-name/rescue                               flags=display="Cache";backup=1;wipeingui;wipeduringfactoryreset
+/cache                 ext4    /dev/block/bootdevice/by-name/rescue                               flags=display="Cache";formattable;wipeduringfactoryreset
 /misc                  emmc    /dev/block/bootdevice/by-name/misc                                 flags=display="Misc";backup=1;flashimg=1
 
 # Boot Properties
