@@ -51,6 +51,9 @@ OF_QUICK_BACKUP_LIST := /boot;/data;
 # Recovery additional features	
 OF_ENABLE_LPTOOLS := 1
 
+# Use this to change the default time zone
+OF_DEFAULT_TIMEZONE := GMT0;BST,M3.5.0,M10.5.0
+
 # Set this to 1 to avoid the new 'NO KERNEL CONFIG' error, when using a prebuilt kernel
 OF_FORCE_PREBUILT_KERNEL := 1
 
