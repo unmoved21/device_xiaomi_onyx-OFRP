@@ -48,6 +48,10 @@ OF_USE_DMCTL := 1
 # Quick backup (Boot, callibration data)
 OF_QUICK_BACKUP_LIST := /boot;/data;
 
+# Set to 1 if the device uses the AIDL BootControl HAL instead of HIDL
+# for A/B slot management and active slot switching.
+OF_USE_AIDL_BOOT_CONTROL := 1
+
 # Recovery additional features	
 OF_ENABLE_LPTOOLS := 1
 
