@@ -31,7 +31,7 @@
 
 # Persistent Properties
 /persist               ext4    /dev/block/bootdevice/by-name/persist                              flags=display="Persist"
-/persist_image         emmc    /dev/block/bootdevice/by-name/persist                              flags=display="Persist";backup=1;flashimg=1
+/persist_image         emmc    /dev/block/bootdevice/by-name/persist                              flags=display="Persist";backup=1
 
 # Firmware Partitions
 /modem                 vfat    /dev/block/bootdevice/by-name/modem                                flags=display="Modem";slotselect;fsflags="ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 wait"
