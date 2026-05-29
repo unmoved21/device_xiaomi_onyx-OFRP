@@ -51,5 +51,8 @@ OF_QUICK_BACKUP_LIST := /boot;/data;
 # Recovery additional features	
 OF_ENABLE_LPTOOLS := 1
 
+# Set this to 1 to avoid the new 'NO KERNEL CONFIG' error, when using a prebuilt kernel
+OF_FORCE_PREBUILT_KERNEL := 1
+
 # Set to 1 to force the casefolding props to true. Useful for devices that shipped with Android 11+/FBEv2, where casefolding is always used
 OF_FORCE_CASEFOLDING := 1
