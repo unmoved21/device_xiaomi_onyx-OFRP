@@ -56,3 +56,6 @@ OF_FORCE_PREBUILT_KERNEL := 1
 
 # Set to 1 to force the casefolding props to true. Useful for devices that shipped with Android 11+/FBEv2, where casefolding is always used
 OF_FORCE_CASEFOLDING := 1
+
+# Enable the FRP reset addon
+OF_ENABLE_FRP_ADDON := 1
