@@ -94,8 +94,11 @@ PRODUCT_BUILD_SUPER_PARTITION  := false
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    bootctrl.sun.recovery \
-    android.hardware.boot@1.2-impl-qti.recovery
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service
+
+PRODUCT_PACKAGES += \
+    bootctrl.sun
 
 # TWRP - Crypto
 TW_INCLUDE_CRYPTO               := true
