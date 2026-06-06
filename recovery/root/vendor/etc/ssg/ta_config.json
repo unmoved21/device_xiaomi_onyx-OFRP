@@ -20,14 +20,9 @@ Confidential and Proprietary - Qualcomm Technologies, Inc.
     { "name":"ConnectionSecurity"}
   ],
   "ta_images": [
-    { "path":"/vendor/firmware_mnt/image/qwes.mbn"},
-    { "path":"/vendor/firmware/image/qwes.mbn"},
-    { "path":"/vendor/firmware_mnt/image/haventkn.mbn"},
-    { "path":"/vendor/firmware/image/haventkn.mbn"},
-    { "path":"/vendor/firmware_mnt/image/tzsc.mbn"}
   ],
   "ta_paths": [
     { "path": "/vendor/firmware_mnt/image"},
-    { "path": "/vendor/firmware/image/"},
+    { "path": "/vendor/firmware"}
   ]
 }
