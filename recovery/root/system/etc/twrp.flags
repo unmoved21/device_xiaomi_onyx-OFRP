@@ -8,7 +8,6 @@
 /metadata              f2fs    /dev/block/bootdevice/by-name/metadata                             flags=display="Metadata";backup=1;wrappedkey
 
 # Logical partitions
-/mi_ext                ext4    mi_ext                                                             flags=display="Mi_EXT"
 /system_ext            ext4    system_ext                                                         flags=display="System_EXT"
 /system_dlkm           ext4    system_dlkm                                                        flags=display="System_DLKM"
 /vendor_dlkm           ext4    vendor_dlkm                                                        flags=display="Vendor_DLKM"
