@@ -20,3 +20,16 @@
 ## Device Picture
 
 ![Picsart](https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-poco-f7-2.jpg)
+
+## Features
+
+- [X] ADB
+- [X] Decryption
+- [X] Display
+- [X] Fasbootd
+- [X] Flashing
+- [X] MTP
+- [X] Sideload
+- [X] USB-OTG
+- [X] Vibrator
+- [ ] WLAN
