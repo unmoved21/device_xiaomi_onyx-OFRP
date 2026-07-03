@@ -64,7 +64,7 @@ import /vendor/etc/ueventd.qcom.userdebug.rc
 
 
 # Firmware directory Path
-firmware_directories /vendor/firmware_mnt/image/ /vendor/modem_firmware/image/
+firmware_directories /vendor/firmware/ /vendor/firmware_mnt/image/ /vendor/modem_firmware/image/
 
 subsystem mem_buf_vm
     devname uevent_devpath
