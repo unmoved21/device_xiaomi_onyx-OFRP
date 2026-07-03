@@ -32,6 +32,7 @@
 
 # Base path for all VM's
 firmware_directories /product/vm-system/
+firmware_directories /vendor/odm/firmware /odm/firmware
 
 # TrustedUI VM
 external_firmware_handler /devices/platform/soc/soc:qcom,guestvm_loader@f3c00000/firmware/trustedvm.mdt system "/vendor/bin/vmmgr -r"

@@ -36,6 +36,9 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Enable Fuse Passthrough
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
 
+BOARD_ROOT_EXTRA_SYMLINKS += \
+    /vendor/odm/firmware:/vendor/odm/firmware/o10u
+
 # Otacert
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     build/make/target/product/security/testkey
