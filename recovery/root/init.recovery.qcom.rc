@@ -13,8 +13,8 @@ on property:twrp.modules.loaded=true
 
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /vendor/firmware_mnt ro
 
-    wait /sys/kernel/boot_adsp/boot
-    write /sys/kernel/boot_adsp/boot 1
+    wait /sys/kernel/boot_adsp/ssr
+    write /sys/kernel/boot_adsp/ssr 1
 
     setprop twrp.firmware.mounted true
 

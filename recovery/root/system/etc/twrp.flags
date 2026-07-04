@@ -47,4 +47,4 @@
 
 # Removable Storage
 /storage               auto    /data/media/0                                                      flags=display="Internal Storage";backup=1;usermrf;fsflags="bind,utf8";removable
-/usb_otg               auto    /dev/block/sdg1                            /dev/block/sdg          flags=display="USB-OTG";fsflags=utf8;storage;wipeingui;removable
+/usb_otg               auto    /dev/block/sdg1                            /dev/block/sdg         flags=display="USB-Storage";fsflags=utf8;storage;wipeingui;removable

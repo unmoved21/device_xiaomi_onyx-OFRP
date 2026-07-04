@@ -65,11 +65,15 @@ on fs
 
 on property:ro.boot.usbcontroller=*
     setprop sys.usb.controller ${ro.boot.usbcontroller}
-    wait /sys/bus/platform/devices/${ro.boot.usb.dwc3_msm:-a600000.ssusb}/mode
-    write /sys/bus/platform/devices/${ro.boot.usb.dwc3_msm:-a600000.ssusb}/mode idle
-    wait /sys/class/udc/${ro.boot.usbcontroller} 0
-    write /sys/bus/platform/devices/${ro.boot.usb.dwc3_msm:-a600000.ssusb}/mode peripheral
-    wait /sys/class/udc/${ro.boot.usbcontroller} 1
+    wait /sys/bus/platform/devices/${ro.boot.usb.dwc3_msm:-a600000.ssusb}/mode 5
+    write /sys/bus/platform/devices/${ro.boot.usb.dwc3_msm:-a600000.ssusb}/mode idle 2>/dev/null
+    wait /sys/class/udc/${ro.boot.usbcontroller} 5
+    write /sys/bus/platform/devices/${ro.boot.usb.dwc3_msm:-a600000.ssusb}/mode peripheral 2>/dev/null
+    wait /sys/class/udc/${ro.boot.usbcontroller} 1 5
+    
+    # USB Role Switch - Set to Device Mode (for ADB/MTP)
+    write /sys/class/usb_role/a600000.dwc3-role-switch/role device 2>/dev/null
+    write /sys/class/usb_role/a600000.ssusb-role-switch/role device 2>/dev/null
 
 on property:sys.usb.config=none && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC "none"
@@ -142,3 +146,28 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=fastboot && property:
     symlink /config/usb_gadget/g1/functions/ffs.fastboot /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
+
+# USB OTG Mass Storage Support
+on property:sys.usb.config=mass_storage && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "mass_storage"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    write /config/usb_gadget/g1/idVendor 0x18D1
+    write /config/usb_gadget/g1/idProduct 0x4EE0
+    mkdir /config/usb_gadget/g1/functions/mass_storage.1 2>/dev/null
+    write /config/usb_gadget/g1/functions/mass_storage.1/lun.0/file /dev/block/sdg1
+    symlink /config/usb_gadget/g1/functions/mass_storage.1 /config/usb_gadget/g1/configs/b.1/f1
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+# USB OTG Host Mode Trigger
+on property:twrp.usb_otg=1
+    write /sys/class/usb_role/a600000.dwc3-role-switch/role host 2>/dev/null
+    write /sys/class/usb_role/a600000.ssusb-role-switch/role host 2>/dev/null
+    setprop sys.usb.config mass_storage
+
+# USB OTG Device Mode Trigger
+on property:twrp.usb_otg=0
+    write /sys/class/usb_role/a600000.dwc3-role-switch/role device 2>/dev/null
+    write /sys/class/usb_role/a600000.ssusb-role-switch/role device 2>/dev/null
+    setprop sys.usb.config adb

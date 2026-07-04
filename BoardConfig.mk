@@ -150,6 +150,7 @@ TW_EXCLUDE_DEFAULT_USB_INIT            := true
 TW_INCLUDE_NTFS_3G                     := true
 TW_NO_EXFAT_FUSE                       := true
 TW_NO_SCREEN_BLANK                     := true
+TW_NO_USB_STORAGE                      := false
 TW_USE_DMCTL                           := true
 TW_USE_TOOLBOX                         := true
 TARGET_USES_MKE2FS                     := true
