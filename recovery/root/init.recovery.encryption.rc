@@ -1,19 +1,18 @@
 # Copyright (C) 2026 unmoved21
 # SPDX-License-Identifier: GPL-3.0-only
 
-on init
+on property:ro.crypto.state=encrypted && property:twrp.firmware.mounted=true
     start vendor.qseecomd
 
 # Runs after qseecomd starts
-on property:vendor.sys.listeners.registered=true
+on property:init.svc.vendor.qseecomd=running
     start vendor.ssgtzd
     start vendor.keymint-qti
     start vendor.gatekeeper_default
 
 # Runs during post-fs-data
-on property:ro.crypto.state=encrypted && property:twrp.firmware.mounted=true
+on property:ro.crypto.state=encrypted && property:twrp.firmware.mounted=true && property:init.svc.vendor.qseecomd=running
     start vendor.keymint-strongbox
-    start vendor.weaver-service
     start vendor.weaver_nxp
     start vendor.secure_element
 
@@ -22,7 +21,6 @@ on property:twrp.all.users.decrypted=true
     stop keystore2
     stop vendor.secure_element
     stop se_omapi
-    stop vendor.weaver-service
     stop vendor.weaver_nxp
     stop vendor.keymint-strongbox
     stop vendor.keymint-qti
