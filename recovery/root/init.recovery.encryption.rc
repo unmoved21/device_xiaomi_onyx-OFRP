@@ -1,36 +1,36 @@
 # Copyright (C) 2026 unmoved21
 # SPDX-License-Identifier: GPL-3.0-only
 
+# Encrypted userdata flow: start crypto stack only when firmware mounts are ready.
 on property:ro.crypto.state=encrypted && property:twrp.firmware.mounted=true
     start vendor.qseecomd
 
-# Runs after qseecomd starts
+# After qseecomd is up, start core trust services.
 on property:init.svc.vendor.qseecomd=running
     start vendor.ssgtzd
     start vendor.keymint-qti
     start vendor.gatekeeper_default
 
-# Runs during post-fs-data
-on property:ro.crypto.state=encrypted && property:twrp.firmware.mounted=true && property:init.svc.vendor.qseecomd=running
+# Start weaver/strongbox only after keymint + gatekeeper are actually running.
+on property:init.svc.vendor.keymint-qti=running && property:init.svc.vendor.gatekeeper_default=running
     start vendor.keymint-strongbox
     start vendor.weaver_nxp
     start vendor.secure_element
 
-# Runs after decryption
+# Teardown after all users are decrypted to avoid stale crypto state.
 on property:twrp.all.users.decrypted=true
     stop keystore2
     stop vendor.secure_element
     stop se_omapi
     stop vendor.weaver_nxp
     stop vendor.keymint-strongbox
-    stop vendor.keymint-qti
-    stop vendor.qseecomd
-    stop vendor.ssgtzd
     stop vendor.gatekeeper_default
+    stop vendor.keymint-qti
+    stop vendor.ssgtzd
+    stop vendor.qseecomd
 
-# Runs after decryption, and running touchscreen service 
+# Optional cleanup for firmware mounts once decrypt is complete and touch service is alive.
 on property:twrp.all.users.decrypted=true && property:init.svc.touchfeature-service=running
     umount /vendor/firmware_mnt
     umount /mnt/vendor/persist
-
     setprop twrp.firmware.mounted false
