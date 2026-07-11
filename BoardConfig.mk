@@ -91,7 +91,7 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
 # Dynamic Partition
 BOARD_SUPER_PARTITION_SIZE                      := 11811160064
 BOARD_SUPER_PARTITION_GROUPS                    := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE               := 11809841488
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE               := 11806965760
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST     := system system_ext product vendor vendor_dlkm odm
 
 # File systems
