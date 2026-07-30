@@ -1,4 +1,4 @@
-# TWRP tree for POCO F7 / Redmi Turbo 4 Pro (onyx)
+# OFOX tree for POCO F7 / Redmi Turbo 4 Pro (onyx)
 
 ## Spec Sheet
 
