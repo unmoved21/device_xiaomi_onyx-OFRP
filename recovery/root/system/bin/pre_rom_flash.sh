@@ -12,6 +12,16 @@ LOGMSG "---$SCRIPT_NAME start---"
 LOGMSG "Resetting SPL date to prevent anti-rollback protection..."
 resetprop ro.build.version.security_patch 2023-12-31
 
+D="/metadata/ota"
+
+mount /metadata 2>/dev/null
+
+LOGMSG "Checking for stale OTA metadata which may block ROM install..."
+if [ -d "$D" ]; then
+    LOGMSG "Wiping $D..."
+    rm -rf "$D" 2>/dev/null
+fi
+
 LOGMSG "Detecting active boot slot..."
 slot="$(getprop ro.boot.slot_suffix)"
 
