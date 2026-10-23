@@ -57,6 +57,16 @@
 					<condition var1="tw_has_boot_slots" var2="1"/>
 					<data variable="tw_high_speed_flash"/>
 				</listitem>
+				<listitem name="{@high_speed_readback_chk}">
+					<condition var1="tw_has_boot_slots" var2="1"/>
+					<condition var1="tw_high_speed_flash" var2="1"/>
+					<data variable="tw_high_speed_readback"/>
+				</listitem>
+				<listitem name="{@high_speed_firmware_chk}">
+					<condition var1="tw_has_boot_slots" var2="1"/>
+					<condition var1="tw_high_speed_flash" var2="1"/>
+					<data variable="tw_high_speed_firmware"/>
+				</listitem>
 <!-- 				<listitem name="{@auto_reflashtwrp_chk}">
 					<condition var1="fox_branch" op="&gt;=" var2="11"/>
 					<condition var1="fox_vab_device" var2="1"/>
