@@ -36,8 +36,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Enable Fuse Passthrough
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
 
+# Some vendor HALs expect firmware to be elsewhere
 BOARD_ROOT_EXTRA_SYMLINKS += \
-    /vendor/odm/firmware:/vendor/odm/firmware/o10u
+    /odm:/vendor/odm \
+    /odm/firmware:/odm/firmware/o10u
 
 # Otacert
 PRODUCT_EXTRA_RECOVERY_KEYS += \
