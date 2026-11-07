@@ -89,20 +89,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ];
     export OF_HIDE_NOTCH=1
     export OF_ALLOW_DISABLE_NAVBAR=0
 
-    # CCACHE
-    export USE_CCACHE=1
-    export CCACHE_EXEC="/usr/bin/ccache"
-    export CCACHE_MAXSIZE="50G"
-    export CCACHE_DIR="/mnt/ccache"
-
-    # Warn if CCACHE_DIR is an invalid directory
-    if [ $USE_CCACHE = 1 ] && [ ! -d ${CCACHE_DIR} ];
-     then
-       echo "CCACHE Directory/Partition is not mounted at \"${CCACHE_DIR}\""
-       echo "Please edit the CCACHE_DIR build variable or mount the directory."
-    fi
-
-    export LC_ALL="C"
     export BUILD_USERNAME=unmoved
     export BUILD_HOSTNAME=github
 
