@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 DEBUG=0
-[ "$DEBUG" = "1" ] && set -o xtrace;
+[ "$DEBUG" = "1" ] && set -o xtrace
 
 LOGMSG() {
 	echo "I:$@" >> /tmp/recovery.log
@@ -25,7 +25,7 @@ optimize_io_and_cpu() {
 			# 3. Increase block request backlog depth
 			echo 512 > "$disk/queue/nr_requests" 2>/dev/null
 
-			# 4. Disable I/O accounting statistics to reduce CPU kernel overhead
+			# 4. Disable I/O accounting statistics to reduce CPU overhead
 			echo 0 > "$disk/queue/iostats" 2>/dev/null
 
 			# 5. Disable rotational delay penalty
@@ -39,7 +39,7 @@ optimize_io_and_cpu() {
 	done
 
 	# Optimize dynamic partition mapper and loop devices (dm-*, loop*)
-	# nr_requests is not writable on dm devices, so it is skipped here
+	# nr_requests is not writable on dm devices, so only apply read_ahead and iostats
 	for dev in /sys/block/dm-* /sys/block/loop*; do
 		if [ -d "$dev/queue" ]; then
 			echo 2048 > "$dev/queue/read_ahead_kb" 2>/dev/null
@@ -47,10 +47,14 @@ optimize_io_and_cpu() {
 		fi
 	done
 
-	# Set walt on every cpufreq policy (onyx has policy0/2/5/7)
+	# Set walt governor on available cpufreq policies (onyx: policy0, policy2, policy5, policy7)
 	LOGMSG "Setting CPU scaling governors to walt..."
 	for p in /sys/devices/system/cpu/cpufreq/policy*; do
-		[ -e "$p/scaling_governor" ] && echo walt > "$p/scaling_governor" 2>/dev/null
+		if [ -e "$p/scaling_governor" ]; then
+			if grep -q "walt" "$p/scaling_available_governors" 2>/dev/null; then
+				echo walt > "$p/scaling_governor" 2>/dev/null
+			fi
+		fi
 	done
 
 	LOGMSG "I/O optimization complete."
@@ -62,7 +66,7 @@ LOGMSG "---$SCRIPT_NAME start---"
 
 optimize_io_and_cpu
 
-/sbin/prune_historic_logs.sh 10
+/sbin/prune_historic_logs.sh 10 2>/dev/null
 
 LOGMSG "---$SCRIPT_NAME end---"
 exit 0
