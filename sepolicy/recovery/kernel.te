@@ -1,0 +1,3 @@
+# kernel
+allow kernel device:dir { write add_name };
+allow kernel device:blk_file { create setattr };

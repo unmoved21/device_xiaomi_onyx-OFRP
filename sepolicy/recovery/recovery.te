@@ -1,0 +1,149 @@
+# service_manager / hwservice
+allow recovery {
+    service_manager_service
+    service_manager_vndservice
+    keystore_service
+    keystore_metrics_service
+    keystore_maintenance_service
+    keystore_compat_hal_service
+    legacykeystore_service
+    authorization_service
+    apc_service
+    secure_element_service
+    hal_bootctl_service
+    hal_gatekeeper_service
+    hal_health_service
+    hal_keymint_service
+    hal_remotelyprovisionedcomponent_service
+    hal_secure_element_service
+    hal_secureclock_service
+    hal_sharedsecret_service
+    hal_weaver_service
+    hal_vibrator_service
+}:service_manager add;
+
+allow recovery {
+    hal_bootctl_service
+    hal_gatekeeper_service
+    hal_keymint_service
+    hal_secure_element_service
+    hal_sharedsecret_service
+    hal_weaver_service
+}:service_manager find;
+
+# hwservicemanager / selinux checks
+allow recovery selinuxfs:dir { open read search };
+allow recovery selinuxfs:file { open read write };
+allow recovery kernel:security compute_av;
+
+# binder / sockets / caps
+allow recovery self:binder { call transfer };
+allow charger recovery:binder call;
+allow recovery self:capability { fsetid sys_rawio };
+allow recovery self:netlink_kobject_uevent_socket { create bind read };
+allow recovery self:qipcrtr_socket { create getattr read write };
+allow recovery kernel:system module_request;
+allow recovery logd:unix_stream_socket connectto;
+allow recovery logdr_socket:sock_file write;
+
+# Prop
+set_prop(recovery, fingerprint_prop)
+set_prop(recovery, timezone_prop)
+get_prop(recovery, keystore_crash_prop)
+
+# block / dm / ioctl 
+allow recovery { block_device dm_device }:blk_file { getattr open read write };
+allow recovery block_device:dir { add_name remove_name write };
+allow recovery block_device:lnk_file { create unlink };
+allow recovery device:chr_file { getattr open read write };
+allow recovery kmsg_device:chr_file { getattr open read };
+allow recovery tmpfs:file { getattr open read write };
+allow recovery dmabuf_heap_device:chr_file { getattr ioctl open read write };
+
+allowxperm recovery { block_device dm_device }:blk_file ioctl { 0x1260 0x1278 0x127a 0x127b 0x4c01 0x5331 };
+allowxperm recovery device:chr_file ioctl { 0x64bc };
+allowxperm recovery { tmpfs media_rw_data_file }:file ioctl { 0x5401 0x540f 0x5413 };
+allowxperm recovery dmabuf_heap_device:chr_file ioctl { 0x4800 };
+
+# sysfs / proc
+allow recovery { sysfs sysfs_loop sysfs_dm }:file { getattr open read write };
+allow recovery sysfs_loop:dir search;
+allow recovery proc_overcommit_memory:file { getattr open read };
+
+# rootfs / tmpfs (orangefox.cfg etc)
+allow recovery rootfs:dir { add_name create remove_name rmdir write };
+allow recovery rootfs:file { append create getattr open read setattr write };
+allow recovery rootfs:fifo_file { create open read };
+allow recovery tmpfs:fifo_file { create open read };
+
+# /data root, cache, vfat, persist 
+allow recovery system_data_root_file:dir { add_name create open read remove_name rmdir write };
+allow recovery system_data_root_file:file { create getattr open read write unlink };
+allow recovery cache_file:dir relabelfrom;
+allow recovery vfat:dir search;
+allow recovery mnt_vendor_file:dir { getattr search };
+allow recovery mnt_vendor_file:file { getattr open read };
+allow recovery { system_userdir_file vendor_userdir_file }:dir { open read };
+allow recovery vendor_data_file:dir { open read search };
+allow recovery vendor_data_file:file getattr;
+allow recovery keystore_data_file:file { getattr open read };
+
+# Firmware & Vendor persist
+allow recovery {
+    vendor_persist_time_file
+    adsprpcd_file
+    firmware_file
+    bt_firmware_file
+    vendor_firmware_file
+}:dir { getattr search open read };
+
+allow recovery {
+    vendor_persist_time_file
+    adsprpcd_file
+    firmware_file
+    bt_firmware_file
+    vendor_firmware_file
+}:file { getattr open read };
+
+# KernelSU helper binaries
+allow recovery adb_data_file:dir { getattr open read search };
+allow recovery adb_data_file:file { execute execute_no_trans getattr map open read };
+allow recovery adb_data_file:lnk_file { getattr read };
+
+# userdata scan (decrypted /data, /sdcard)
+allow recovery data_file_type:dir { getattr open read search };
+allow recovery data_file_type:file getattr;
+allow recovery data_file_type:lnk_file getattr;
+allow recovery data_file_type:sock_file getattr;
+allow recovery data_file_type:fifo_file getattr;
+
+# Dalvik wipe
+allow recovery dalvikcache_data_file:dir { open read remove_name rmdir write };
+allow recovery dalvikcache_data_file:file { getattr unlink };
+
+# non-data_file_type types from the log
+allow recovery {
+    ota_package_file property_data_file wpa_socket recovery_data_file
+    system_dlkm_file linkerconfig_file media_userdir_file wallpaper_file
+    icon_file ringtone_file packages_list_file
+}:dir { getattr open read search };
+
+allow recovery {
+    property_data_file recovery_data_file ringtone_file wallpaper_file
+    icon_file packages_list_file
+}:file { getattr read };
+
+# /sdcard
+allow recovery media_rw_data_file:dir { add_name create getattr open read relabelfrom relabelto remove_name search setattr watch write rmdir };
+allow recovery media_rw_data_file:file { append create getattr ioctl map open read relabelfrom relabelto setattr unlink write };
+allow recovery { bluetooth_data_file gsi_persistent_data_file }:file getattr;
+
+allow recovery {
+    adb_keys_file apk_metadata_file asec_image_file odsign_metrics_file
+    shared_relro_file shortcut_manager_icons user_profile_root_file
+    apex_ota_reserved_file
+}:dir { getattr open read search };
+
+allow recovery {
+    shared_relro_file shortcut_manager_icons system_ndebug_socket system_unsolzygote_socket
+}:{ file sock_file } getattr;
