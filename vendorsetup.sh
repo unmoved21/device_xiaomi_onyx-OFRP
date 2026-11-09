@@ -89,6 +89,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ];
     export OF_HIDE_NOTCH=1
     export OF_ALLOW_DISABLE_NAVBAR=0
 
+    export FOX_MAINTAINER_PATCH_VERSION=1
     export BUILD_USERNAME=unmoved
     export BUILD_HOSTNAME=github
 
