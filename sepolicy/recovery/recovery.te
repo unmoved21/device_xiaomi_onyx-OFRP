@@ -110,6 +110,14 @@ allow recovery adb_data_file:dir { getattr open read search };
 allow recovery adb_data_file:file { execute execute_no_trans getattr map open read };
 allow recovery adb_data_file:lnk_file { getattr read };
 
+# OrangeFox data traversal & backup size calculation
+recovery_only(`
+    allow recovery app_data_file:dir { open read getattr search };
+    allow recovery app_data_file:file { getattr read open };
+    allow recovery media_rw_data_file:dir { open read getattr search };
+    allow recovery media_rw_data_file:file { getattr read open };
+')
+
 # userdata scan (decrypted /data, /sdcard)
 allow recovery data_file_type:dir { getattr open read search };
 allow recovery data_file_type:file getattr;
