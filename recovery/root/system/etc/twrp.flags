@@ -10,7 +10,7 @@
 /vendor_dlkm           ext4    vendor_dlkm                                                        flags=display="Vendor_DLKM"
 
 # Metadata/Cache/Misc Properties
-/metadata              f2fs    /dev/block/bootdevice/by-name/metadata                             flags=display="Metadata";backup=1;wrappedkey
+/metadata              f2fs    /dev/block/bootdevice/by-name/metadata                             flags=display="Metadata";backup=1;wrappedkey;wipeingui=0
 /cache                 ext4    /dev/block/bootdevice/by-name/rescue                               flags=display="Cache";formattable;wipeduringfactoryreset
 /misc                  emmc    /dev/block/bootdevice/by-name/misc                                 flags=display="Misc"
 
