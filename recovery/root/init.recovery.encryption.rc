@@ -29,8 +29,8 @@ on property:twrp.all.users.decrypted=true
     stop vendor.ssgtzd
     stop vendor.qseecomd
 
-# Optional cleanup for firmware mounts once decrypt is complete and touch service is alive.
-on property:twrp.all.users.decrypted=true && property:init.svc.touchfeature-service=running
+# Safe teardown for firmware mounts once decryption is done and touch is active.
+on property:twrp.all.users.decrypted=true && property:init.svc.touch_report=running
     umount /vendor/firmware_mnt
     umount /mnt/vendor/persist
     setprop twrp.firmware.mounted false
