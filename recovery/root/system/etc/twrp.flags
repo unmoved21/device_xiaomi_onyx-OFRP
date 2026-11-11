@@ -4,9 +4,6 @@
 
 # mount point          fstype  device                                     device2                 flags
 
-# Userdata/Metadata partitions
-/metadata              f2fs    /dev/block/bootdevice/by-name/metadata                             flags=display="Metadata";backup=1;wrappedkey
-
 # Logical partitions
 /system_ext            ext4    system_ext                                                         flags=display="System_EXT"
 /system_dlkm           ext4    system_dlkm                                                        flags=display="System_DLKM"
